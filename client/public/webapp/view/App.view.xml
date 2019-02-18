@@ -1,0 +1,43 @@
+<mvc:View 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m" 
+	xmlns:tnt="sap.tnt"
+	xmlns:core="sap.ui.core" 
+	height="100%"
+	displayBlock="true" 
+	controllerName="de.hms.controller.App">
+	<App>
+		<pages>
+			<tnt:ToolPage id="toolPage">
+				<tnt:header>
+					<tnt:ToolHeader>
+						<Button icon="sap-icon://menu2" press="onPressSideNavigationToggleButton" type="Transparent">
+							<layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
+							</layoutData>
+						</Button>
+						<ToolbarSpacer width="40%"/>
+						<Text text="{i18n>mainTitle}"></Text>
+					</tnt:ToolHeader>			
+				</tnt:header>
+
+				<tnt:sideContent>
+					<tnt:SideNavigation id="sideNavigation" itemSelect="onItemSelect">
+						<tnt:item>
+							<tnt:NavigationList>
+								<tnt:NavigationListItem key="start" text="{i18n>menuStart}" icon="sap-icon://home">
+								</tnt:NavigationListItem>
+								<tnt:NavigationListItem key="todo" text="{i18n>menuToDo}" icon="sap-icon://activity-items">
+								</tnt:NavigationListItem>								
+							</tnt:NavigationList>
+						</tnt:item>
+					</tnt:SideNavigation>
+				</tnt:sideContent>
+				<tnt:mainContents>
+					<NavContainer id="navContainer">
+					</NavContainer>
+				</tnt:mainContents>
+			</tnt:ToolPage>
+		</pages>
+	</App>
+</mvc:View>
