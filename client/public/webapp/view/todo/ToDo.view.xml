@@ -1,0 +1,33 @@
+<mvc:View 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+	controllerName="de.hms.controller.todo.ToDo">
+    <Page
+    title="ToDo List">
+        <subHeader>
+            <Toolbar>
+                <SearchField
+                    id="searchTodoItemsInput"
+                    liveChange=".onSearch"
+                    width="100%"/>
+            </Toolbar>
+        </subHeader>
+        <content>
+            <t:Table id="ToDoTable">
+                <t:columns>
+			        <t:Column>
+			        	<Text text="{i18n>listTodo}" />
+			        </t:Column>
+			        <t:Column>
+						<t:multiLabels>
+							<Label text="{i18n>toDoInsert}" textAlign="Center" width="100%"/>
+							<Label text="{i18n>toDoEndDate}" textAlign="Center" width="100%"/>
+						</t:multiLabels>
+			        </t:Column>
+                </t:columns>
+
+            </t:Table>
+        </content>
+    </Page>
+</mvc:View>

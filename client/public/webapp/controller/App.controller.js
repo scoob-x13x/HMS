@@ -19,6 +19,16 @@ sap.ui.define([
         onItemSelect: function(oEvent) {
             var item = oEvent.getParameter("item");
             console.log(item.getKey());
+
+            switch(item.getKey()){
+                case "todo":
+                    this.getRouter().navTo("todo");
+                    break;
+                case "start":
+                    this.getRouter().navTo("start");
+                    break;
+            }
+
         }
 
 

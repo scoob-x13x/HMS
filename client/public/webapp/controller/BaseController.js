@@ -5,9 +5,13 @@ sap.ui.define([
 
     return Conroller.extend("de.hms.controller.BaseController", {
 
-		getResourceBundle : function () {
-			return this.getOwnerComponent().getModel("i18n").getResourceBundle();
-		}	
+      getResourceBundle : function () {
+        return this.getOwnerComponent().getModel("i18n").getResourceBundle();
+      },
+      
+      getRouter: function() {
+        return this.getOwnerComponent().getRouter();
+      }
 
     })
 

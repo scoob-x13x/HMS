@@ -21,6 +21,11 @@ module.exports = function (oApp) {
         new ToDo({
             title: req.body.title,
             completed: req.body.completed
+        }).save(function(err, trainer){
+            if (err) {
+                return res.status(500).send("Error occurred: database error")
+            }
+            return res.send();
         })
     })
 

@@ -47,6 +47,30 @@
 					"bundleName": "de.hms.i18n.i18n"
 				}
 			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "de.hms.view",
+				"controlId": "navContainer",
+				"controlAggregation": "pages",
+				"transition": "show"
+			},
+			"routes": [
+				{
+					"pattern": "ToDo",
+					"name": "todo",
+					"target": ["todo"]
+				}
+			],
+			"targets": {
+				"todo": {
+					"viewName": "todo.ToDo",
+					"viewId": "trainer",
+					"viewLevel": 1
+				}
+			}
 		}
     }
 }
