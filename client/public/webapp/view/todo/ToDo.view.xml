@@ -14,20 +14,28 @@
             </Toolbar>
         </subHeader>
         <content>
-            <t:Table id="ToDoTable">
-                <t:columns>
-			        <t:Column>
+            <Table id="ToDoTable" items="{ path: '/' }">
+                <columns>
+			        <Column>
 			        	<Text text="{i18n>listTodo}" />
-			        </t:Column>
-			        <t:Column>
-						<t:multiLabels>
-							<Label text="{i18n>toDoInsert}" textAlign="Center" width="100%"/>
-							<Label text="{i18n>toDoEndDate}" textAlign="Center" width="100%"/>
-						</t:multiLabels>
-			        </t:Column>
-                </t:columns>
+			        </Column>
+			        <Column>
+			        	<Text text="{i18n>toDoInsert}" />
+			        </Column>
+			        <Column>
+			        	<Text text="{i18n>toDoEndDate}" />
+			        </Column>
 
-            </t:Table>
+                </columns>
+		        <items>
+			        <ColumnListItem press="onListItemPressed">
+				        <cells>
+                            <Text text="{title}"/>
+                            <Text text="{completed}"/>
+				        </cells>
+			        </ColumnListItem>
+		        </items>
+            </Table>
         </content>
     </Page>
 </mvc:View>

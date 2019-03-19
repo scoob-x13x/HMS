@@ -10,13 +10,13 @@ sap.ui.define([
 		onInit: function(){
 			var oJSONModel = new JSONModel();
             this.getView().setModel(oJSONModel);
-            //this._loadUserData();
+            this._loadUserData();
         },
-        /*
+        
 		_loadUserData: function(){
-			this.getView().getModel().loadData("/api/trainer");
+			this.getView().getModel().loadData("/api/todo");
         },
-        */
+        
 		onListItemPressed : function(){
 
            console.log("test");
