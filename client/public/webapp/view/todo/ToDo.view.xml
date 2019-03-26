@@ -11,6 +11,7 @@
                     id="searchTodoItemsInput"
                     liveChange=".onSearch"
                     width="100%"/>
+                <Button icon="sap-icon://add" press="onListItemPressed"/>
             </Toolbar>
         </subHeader>
         <content>
