@@ -19,8 +19,43 @@ sap.ui.define([
         
 		onListItemPressed : function(){
 
-           console.log("test");
+		   console.log("test");
+		   this.addDataTest();
+		},
+
+		onCloseAddUserDialog: function(){
+			this._getDialog().close();
+			this._getDialog().destroy();
+			delete this._oDialog;
+		},
+
+		addDataTest: function(){
+			var that = this;
+
+			var testData = {
+				"title": "Test123123",
+				"completed": "false",
+			};
+
+			$.ajax({
+    			url: "/api/todo/",
+    			type: "POST",
+				contentType: "application/json", 
+				data: JSON.stringify(testData)
+			}).done(function(){
+				MessageToast.show("Data added");
+				that._loadUserData();
+			}).fail(function(jqXHR, textStatus, error){
+				MessageToast.show("Error");				
+			});
+
+		},
+
+		deleteListItem: function(){
+
 		}
+
+		
 
     })
 

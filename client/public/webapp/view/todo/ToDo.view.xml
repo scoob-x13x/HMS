@@ -33,6 +33,7 @@
 				        <cells>
                             <Text text="{title}"/>
                             <Text text="{completed}"/>
+                            <Button icon="sap-icon://delete" press="deleteListItem"/>
 				        </cells>
 			        </ColumnListItem>
 		        </items>
