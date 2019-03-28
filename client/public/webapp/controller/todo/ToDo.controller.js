@@ -15,18 +15,54 @@ sap.ui.define([
         
 		_loadUserData: function(){
 			this.getView().getModel().loadData("/api/todo");
-        },
-        
+		},
+		
 		onListItemPressed : function(){
 
-		   console.log("test");
-		   this.addDataTest();
-		},
+			console.log("test");
+			//this.addDataTest();
+			this._getDialog().open();
+		 },
 
-		onCloseAddUserDialog: function(){
+		_getDialog : function () {
+        	if (!this._oDialog) {
+            	this._oDialog = sap.ui.xmlfragment("de.hms.view.todo.addToDo", this);
+            	this.getView().addDependent(this._oDialog);
+         	}
+         	return this._oDialog;
+      	},
+        
+		
+		onCloseAddToDoDialog: function(){
 			this._getDialog().close();
 			this._getDialog().destroy();
 			delete this._oDialog;
+		},
+
+		onAddTodoDialog: function(){
+			var that = this;
+
+			var toDoTitle = sap.ui.getCore().byId("title").getValue();
+			var terminationDate = sap.ui.getCore().byId("endDate").getDateValue();
+			console.log(terminationDate);
+			var todoData = {
+				"title": toDoTitle,
+				"completed": "false",
+				"terminationdate": terminationDate
+			};
+
+			$.ajax({
+    			url: "/api/todo/",
+    			type: "POST",
+				contentType: "application/json", 
+				data: JSON.stringify(todoData)
+			}).done(function(){
+				MessageToast.show("Data added");
+				that._loadUserData();
+			}).fail(function(jqXHR, textStatus, error){
+				MessageToast.show("Error");				
+			});
+
 		},
 
 		addDataTest: function(){
@@ -51,11 +87,25 @@ sap.ui.define([
 
 		},
 
-		deleteListItem: function(){
+		deleteListItem: function(oEvent){
+			var that = this;
+			var oContext = oEvent.getSource().getParent().getBindingContext();
+			var id = oContext.getProperty("_id");
+
+			console.log(id);
+
+			$.ajax({
+				url: "/api/todo/" + id,
+				type: "DELETE"
+			}).done(function(){
+				MessageToast.show("Deleted");
+				that._loadUserData();
+			}).fail(function(jqXHR, textStatus, error){
+				MessageToast.show(jqXHR, textStatus, error);
+			});
+			
 
 		}
-
-		
 
     })
 

@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form">
+    <Dialog title="ToDo Hinzufügen">
+		<content>
+	    	<form:SimpleForm id="objectForm">
+		    	<form:content>
+		    		<Label text="ToDo"/>
+		    		<Input id="title" required="true"/>   
+                    <Label text="Termination Date"/>  
+                    <DateTimePicker
+                            id="endDate"
+                            displayFormat="short"/>           
+		    	</form:content>
+	   		</form:SimpleForm>  
+		</content> 
+		<beginButton>
+			<Button text="save" press="onAddTodoDialog"/>
+		</beginButton> 		
+		<endButton>
+			<Button text="cancel" press="onCloseAddToDoDialog"/>		
+		</endButton>
+    </Dialog>
+</core:FragmentDefinition>
